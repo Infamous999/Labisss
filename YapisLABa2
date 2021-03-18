@@ -1,0 +1,133 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std; 
+
+int speed()
+{
+	while (true)
+	{
+		cout << "Enter the speed ";
+		int V;
+		cin >> V;
+
+		if (cin.fail() || V < 0)
+		{
+			cin.clear();
+			cin.ignore(100, '\n');
+			cout << "Error enter V again" << endl;
+		}
+		else
+		{
+			return V;
+		}
+	}
+}
+
+int time()
+{
+	while (true)
+	{	
+		cout << "Enter the time ";
+		int T;
+		cin >> T;
+		if (cin.fail() || T < 0)
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Error enter T again";
+		}
+		else {
+			return T;
+		}
+	}
+}
+
+int angle()
+{
+	while(true)
+	{
+		cout << "Enter the angle ";
+		int a;
+		cin >> a;
+		if (cin.fail() || a <= 0 || a >= 90)
+		{
+			cin.clear();
+			cin.ignore(100, '\n');
+			cout << "Error enter angle again";
+		}
+		else
+		{
+			return a;
+		}
+	}
+}
+
+int weight()
+{
+	while (true)
+	{
+		cout << "Enter the weight ";
+		int m;
+		cin >> m;
+		if (cin.fail() || m <= 0)
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Error enter m again";
+		}
+		
+		else
+		{
+			return m;
+		}
+	
+	}
+}
+
+
+	double koef()
+	{
+		while (true)
+		{
+			cout << "Enter the koef ";
+			double K;
+			cin >> K;
+			if (cin.fail() || K <= 0)
+			{
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Error enter koef again";
+			}
+			else
+			{
+				return K;
+			}
+		}
+	}
+
+	int main()
+	{
+		int function_speed = speed();
+		int function_time = time();
+		int function_weight = weight();
+		int function_angle = angle();
+		double function_koefff = koef();
+
+		const int g = 10;
+		double x, y;
+		double koef_main = function_koefff / function_weight;
+
+
+		for (int i = 0; i < function_time;i++)
+		{
+			x = (((function_speed * cos(function_angle) / koef_main) * (1 - exp(-koef_main * i))) - (g * i / koef_main));
+			y = (((g / koef_main) + function_speed * sin(function_angle)) / koef_main) * (1 - exp(-koef_main * i)) - (g * i / koef_main);
+			cout << "x(" << i + 1 << ")=" << x << " " << endl;
+			cout << "y(" << i + 1 << ")=" << y << " " << endl;
+
+		}
+
+
+
+	}
