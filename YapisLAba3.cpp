@@ -36,7 +36,7 @@ int main()
 	{
 		x = rand() % 100;
 		cout << x << endl;
-		a = pow(x, 2);
+		a += pow(x, 2);
 	}
 
 	double rmsvalue = sqrt(a / value);
